@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.11.57" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/ModificarCurso.jsff" usageId="view_ModificarCursoPageDef"/>
+    <page path="/ListadoPorCurso.jsff" usageId="view_ListadoPorCursoPageDef"/>
+    <page path="/untitled1.jsf" usageId="view_untitled1PageDef"/>
+    <page path="/NuevoCurso.jsff" usageId="view_NuevoCursoPageDef"/>
+    <page path="/Presentacion.jsf" usageId="view_PresentacionPageDef"/>
+    <page path="/NuevaMateria.jsff" usageId="view_NuevaMateriaPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_ModificarCursoPageDef" path="view.pageDefs.ModificarCursoPageDef"/>
+    <page id="view_ListadoPorCursoPageDef" path="view.pageDefs.ListadoPorCursoPageDef"/>
+    <page id="view_untitled1PageDef" path="view.pageDefs.untitled1PageDef"/>
+    <page id="view_NuevoCursoPageDef" path="view.pageDefs.NuevoCursoPageDef"/>
+    <page id="view_PresentacionPageDef" path="view.pageDefs.PresentacionPageDef"/>
+    <page id="view_NuevaMateriaPageDef" path="view.pageDefs.NuevaMateriaPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="CursoMateriasDataControl" Package="model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="CursoMateriasLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

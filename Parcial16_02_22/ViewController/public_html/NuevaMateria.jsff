@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:decorativeBox id="db1">
+    <f:facet name="top">
+      <af:panelGridLayout id="pgl3">
+        <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+          <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1">
+            <af:button text="Volver" id="b10" action="Volver"/>
+          </af:gridCell>
+        </af:gridRow>
+      </af:panelGridLayout>
+    </f:facet>
+    <f:facet name="center">
+      <af:panelFormLayout id="pfl1">
+        <af:inputText value="#{bindings.Id.inputValue}" label="#{bindings.Id.hints.label}"
+                      required="#{bindings.Id.hints.mandatory}" columns="#{bindings.Id.hints.displayWidth}"
+                      maximumLength="#{bindings.Id.hints.precision}" shortDesc="#{bindings.Id.hints.tooltip}" id="it1">
+          <f:validator binding="#{bindings.Id.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.Id.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Nombre.inputValue}" label="#{bindings.Nombre.hints.label}"
+                      required="#{bindings.Nombre.hints.mandatory}" columns="#{bindings.Nombre.hints.displayWidth}"
+                      maximumLength="#{bindings.Nombre.hints.precision}" shortDesc="#{bindings.Nombre.hints.tooltip}"
+                      id="it2">
+          <f:validator binding="#{bindings.Nombre.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Duracion.inputValue}" label="#{bindings.Duracion.hints.label}"
+                      required="#{bindings.Duracion.hints.mandatory}" columns="#{bindings.Duracion.hints.displayWidth}"
+                      maximumLength="#{bindings.Duracion.hints.precision}"
+                      shortDesc="#{bindings.Duracion.hints.tooltip}" id="it3">
+          <f:validator binding="#{bindings.Duracion.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.Duracion.format}"/>
+        </af:inputText>
+        <af:selectOneChoice value="#{bindings.CursoId.inputValue}" label="#{bindings.CursoId.label}"
+                            required="#{bindings.CursoId.hints.mandatory}" shortDesc="#{bindings.CursoId.hints.tooltip}"
+                            id="soc1">
+          <f:selectItems value="#{bindings.CursoId.items}" id="si1"/>
+          <f:validator binding="#{bindings.CursoId.validator}"/>
+        </af:selectOneChoice>
+        <f:facet name="footer">
+          <af:panelGroupLayout layout="vertical" id="pgl1">
+            <af:panelGroupLayout layout="horizontal" id="pgl2">
+              <af:button actionListener="#{bindings.First.execute}" text="First" disabled="#{!bindings.First.enabled}"
+                         partialSubmit="true" id="b1"/>
+              <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                         disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"/>
+              <af:button actionListener="#{bindings.Next.execute}" text="Next" disabled="#{!bindings.Next.enabled}"
+                         partialSubmit="true" id="b3"/>
+              <af:button actionListener="#{bindings.Last.execute}" text="Last" disabled="#{!bindings.Last.enabled}"
+                         partialSubmit="true" id="b4"/>
+            </af:panelGroupLayout>
+            <af:button text="Submit" id="b5"/>
+            <af:button actionListener="#{bindings.CreateWithParams.execute}" text="Nueva Materia"
+                       disabled="#{!bindings.CreateWithParams.enabled}" id="b8"/>
+            <af:button actionListener="#{bindings.Delete.execute}" text="Borrar" disabled="#{!bindings.Delete.enabled}"
+                       id="b9"/>
+            <af:button actionListener="#{bindings.Commit.execute}" text="Guardar" disabled="#{!bindings.Commit.enabled}"
+                       id="b6" action="Commit"/>
+            <af:button actionListener="#{bindings.Rollback.execute}" text="Cancelar"
+                       disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7" action="Rollback">
+              <af:resetActionListener/>
+            </af:button>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelFormLayout>
+    </f:facet>
+  </af:decorativeBox>
+</ui:composition>

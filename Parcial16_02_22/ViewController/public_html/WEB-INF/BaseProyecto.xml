@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="BaseProyecto">
+    <default-activity>ListadoPorCurso</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="ListadoPorCurso">
+      <page>/ListadoPorCurso.jsff</page>
+    </view>
+    <view id="ModificarCurso">
+      <page>/ModificarCurso.jsff</page>
+    </view>
+    <view id="NuevoCurso">
+      <page>/NuevoCurso.jsff</page>
+    </view>
+    <view id="NuevaMateria">
+      <page>/NuevaMateria.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>ListadoPorCurso</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>Modificar</from-outcome>
+        <to-activity-id>ModificarCurso</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>NewCurso</from-outcome>
+        <to-activity-id>NuevoCurso</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>NewMateria</from-outcome>
+        <to-activity-id>NuevaMateria</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>ModificarCurso</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>Commit</from-outcome>
+        <to-activity-id>ListadoPorCurso</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>Rollback</from-outcome>
+        <to-activity-id>ListadoPorCurso</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>NuevoCurso</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>Commit</from-outcome>
+        <to-activity-id>ListadoPorCurso</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome>Rollback</from-outcome>
+        <to-activity-id>ListadoPorCurso</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>NuevaMateria</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>Commit</from-outcome>
+        <to-activity-id>ListadoPorCurso</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>Rollback</from-outcome>
+        <to-activity-id>ListadoPorCurso</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>Volver</from-outcome>
+        <to-activity-id>ListadoPorCurso</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

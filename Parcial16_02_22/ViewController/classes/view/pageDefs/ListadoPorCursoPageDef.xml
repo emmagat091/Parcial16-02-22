@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57" id="ListadoPorCursoPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CursosView1" RangeSize="25" DataControl="CursoMateriasDataControl" id="CursosView1Iterator"/>
+    <iterator Binds="MateriasView2" RangeSize="25" DataControl="CursoMateriasDataControl" id="MateriasView2Iterator"/>
+    <searchRegion Binds="MateriasView2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="MateriasView2Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CursosView1Iterator" id="CursosView1">
+      <nodeDefinition DefName="model.view.CursosView" Name="CursosView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Nombre"/>
+          <Item Value="Duracion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="MateriasView2Iterator" id="MateriasView2">
+      <nodeDefinition DefName="model.view.MateriasView" Name="MateriasView20">
+        <AttrNames>
+          <Item Value="CursoId"/>
+          <Item Value="Nombre"/>
+          <Item Value="Duracion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CursosView1Iterator" id="CreateWithParams" RequiresUpdateModel="true"
+            Action="createWithParams"/>
+    <action IterBinding="CursosView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="CursosView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CursosView1Iterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CursosView1Iterator" id="Duracion">
+      <AttrNames>
+        <Item Value="Duracion"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="CursoMateriasDataControl"/>
+  </bindings>
+</pageDefinition>
